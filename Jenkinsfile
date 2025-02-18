@@ -54,9 +54,7 @@ pipeline{
               git config user.name "umarmukthar159"
               git add node-app-helm/values.yaml
               git commit -m "update values"
-              git fetch origin
-              git rebase origin/main  // Rebase to incorporate remote changes
-              git push origin main
+              git push
               """
               }
             }
