@@ -36,7 +36,7 @@ pipeline{
                 script{
                 sh """
                    docker tag "${IMAGE_REPO_NAME}:${IMAGE_TAG}" "${ECR_REPO}/${IMAGE_REPO_NAME}:${env.BUILD_NUMBER}"
-                   docker push "${ECR_REPO}/${IMAGE_REPO_NAME}:${env.BUILD_NUMBER}"
+                   docker push "${ECR_REPO}/${IMAGE_REPO_NAME}:${BUILD_NUMBER}"
                 """
                 }
             }
