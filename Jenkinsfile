@@ -47,7 +47,7 @@ pipeline{
               sh """
               git pull https://github.com/umarmukthar159/argoCD/
               git switch main
-             sed -i "s/\(^\s*tag:\s*\).*/\1\"${BUILD_NUMBER}\"/" node-app-helm/values.yaml
+              sed -i "s/\(^\s*tag:\s*\).*/\1\"${BUILD_NUMBER}\"/" node-app-helm/values.yaml
               git config user.email "umarmukthar.n@contus.in"
               git config user.name "umarmukthar159"
               git add node-app-helm/values.yaml
