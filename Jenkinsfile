@@ -45,6 +45,7 @@ pipeline{
             steps{
               withCredentials([gitUsernamePassword(credentialsId: '2025cc27-bcf7-4625-abc3-892b448e3e62', gitToolName: 'Default')]) {
               sh """
+              rm -rf argoCD
               git pull https://github.com/umarmukthar159/argoCD/
               git switch main
               sed -i "s/\\(^\\s*tag:\\s*\\).*/\\1\"${BUILD_NUMBER}\"/" node-app-helm/values.yaml
