@@ -3,7 +3,7 @@ pipeline{
 
     stages{
         stage('Build the Docker image'){
-            app = docker.build(node:latest)
+            app = docker.build("node/latest")
         }
     }
 }
