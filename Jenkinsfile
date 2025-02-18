@@ -4,6 +4,7 @@ pipeline{
     IMAGE_REPO_NAME="nginx/node-app"
     IMAGE_TAG="latest"
     AWS_REGION="us-east-1"
+    ECR_REPO="140023360432.dkr.ecr.us-east-1.amazonaws.com"
     }
     stages{
         stage('checkout SCM'){
@@ -28,6 +29,14 @@ pipeline{
                 script{
                     app = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
                 }
+            }
+        }
+        stage('Push the docker image'){
+            script{
+                sh """
+                   docker tag "${IMAGE_REPO_NAME}:${IMAGE_TAG}" "${ECR_REPO}/${IMAGE_REPO_NAME}:${env.BUILD_NUMBER}"
+                   docker push "${ECR_REPO}/${IMAGE_REPO_NAME}:${env.BUILD_NUMBER}"
+                """
             }
         }
     }
