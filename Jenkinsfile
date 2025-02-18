@@ -3,7 +3,7 @@ pipeline{
     environment{
     IMAGE_REPO_NAME="nginx/node-app"
     IMAGE_TAG="latest"
-    AWS_REGION"us-east-1"
+    AWS_REGION="us-east-1"
     }
     stages{
         stage('checkout SCM'){
