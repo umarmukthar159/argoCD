@@ -48,6 +48,7 @@ pipeline{
               rm -rf argoCD
               git pull https://github.com/umarmukthar159/argoCD/
               git switch main
+              pwd
               sed -i "s/\\(^\\s*tag:\\s*\\).*/\\1\"${BUILD_NUMBER}\"/" node-app-helm/values.yaml
               git config user.email "umarmukthar.n@contus.in"
               git config user.name "umarmukthar159"
