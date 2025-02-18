@@ -41,6 +41,20 @@ pipeline{
                 }
             }
         }
+        stage('Update the helm values'){
+            steps{
+              withCredentials([gitUsernamePassword(credentialsId: '2025cc27-bcf7-4625-abc3-892b448e3e62', gitToolName: 'Default')]) {
+              sh """
+              git pull https://github.com/umarmukthar159/argoCD/
+              git switch main
+              sed -i "s/^tag: .*/tag: \"${BUILD_NUMBER}\"/" node-app-helm/values.yaml
+              git add node-app-helm/values.yaml
+              git commit -m "update values"
+              git push
+              """
+              }
+            }
+        }
         
     }
 }
