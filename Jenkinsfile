@@ -1,8 +1,8 @@
 pipeline{
     agent any
     environment{
-    IMAGE_REPO_NAME=nginx/node-app
-    IMAGE_TAG=latest
+    IMAGE_REPO_NAME="nginx/node-app"
+    IMAGE_TAG="latest"
     }
     stages{
         stage('checkout SCM'){
